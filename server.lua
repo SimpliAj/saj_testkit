@@ -44,3 +44,32 @@ end
 -- Register the event for using the item
 RegisterServerEvent("useItem")
 AddEventHandler("useItem", useItem)
+
+-- UPDATE CHECKER
+
+local currentVersion = '0.0.1'
+local githubApiUrl = 'https://api.github.com/repos/SimpliAj/healitem_esx_baguslicensemanager/releases/latest'
+
+function checkForUpdates()
+    -- Use LUA's http library to fetch the latest release information from GitHub
+    local response = nil
+    local success, response = pcall(function()
+        response = json.decode(Get(githubApiUrl))
+    end)
+    if success then
+        local latestVersion = response.tag_name
+        -- Compare the current version with the latest version on GitHub
+        if currentVersion ~= latestVersion then
+            print("A new version of the script is available: " .. latestVersion)
+            --Add code to download the new version from github
+        else
+            print("You are running the latest version of the script.")
+        end
+    else
+        print("Error checking for updates: " .. response)
+    end
+end
+
+-- call the check for update function
+checkForUpdates()
+
