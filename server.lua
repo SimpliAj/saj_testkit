@@ -1,3 +1,8 @@
+ESX = nil
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
+
 -- Table to store the licenses required for each item
 local itemLicenses = {
     ["item1"] = "item1license",
