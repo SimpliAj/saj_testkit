@@ -1,3 +1,11 @@
+-- Table to store the licenses required for each item
+local itemLicenses = {
+    ["item1"] = "item1license",
+    ["item2"] = "item2license",
+    ["item3"] = "item3license",
+    -- Add more items and their required licenses here
+}
+
 -- Function to check if a user has a certain license
 function hasLicense(player, license)
     local result = MySQL.Sync.fetchAll("SELECT * FROM users WHERE identifier = @identifier", {
@@ -13,10 +21,21 @@ function hasLicense(player, license)
     return false
 end
 
--- Function to use an item to heal nearby players
+-- Function to use an item
 function useItem(player, item)
-    if hasLicense(player.identifier, "healer") then
-        -- Code to use the item and heal nearby players goes here
+    -- Check if the player has the necessary license for the item
+    if hasLicense(player.identifier, itemLicenses[item]) then
+        -- Get a list of nearby players
+        local players = ESX.GetPlayers()
+        for i=1, #players do
+            local targetPlayer = ESX.GetPlayerFromId(players[i])
+            if targetPlayer.identifier ~= player.identifier then
+                -- Heal the player by 40%
+                targetPlayer.setHealth(targetPlayer.getHealth() + (targetPlayer.getMaxHealth()*0.4))
+                targetPlayer.notify("You have been healed by 40%")
+                break
+            end
+        end
     else
         player.notify("You do not have the necessary license to use this item.")
     end
