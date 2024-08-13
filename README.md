@@ -1,22 +1,26 @@
 # saj_testkit
 
 ## Requirements:
- - ox lib
+ - ox_lib
 
-## Optional Requirements:
- - emfan-2step
- - core vehicle
- - rahe boosting system
- - saj_tuev
- - okok notify
+## Optional Integrations:
+- emfan-2step
+- core_vehicle
+- rahe_boosting_system
+- saj_tuev
+- okok_notify
 
-## Information:
-This scripts works for < esx 1.7.5. When item "testkit" has been used it opens a Menu to select for different checks on vehicle near player.
+## Description:
+The saj_testkit script is compatible with ESX versions up to 1.7.5. When the "testkit" item is used, it opens a menu that allows the player to perform various checks on a nearby vehicle.
 
-__Checks for:__
-- Illegal Tuning
-- VIN check
-- 2step Kit check
-- TÜV (Vehicle Registration)
+## Available Checks:
+ - __Illegal Tuning:__ Identify unauthorized vehicle modifications.
+ - __VIN Check:__ Verify the vehicle's identification number.
+ - __2step Kit Check:__ Inspect the presence and functionality of a 2step kit.
+ - __TÜV (Vehicle Registration):__ Check the registration status of the vehicle (requires integration with saj_tuev).
 
-In the config.lua you can disable optional requirements which you dont use also you can change the Notify System from config. (ESX Default Notify + OKOK Notify Integrated)
+## Configuration:
+The script is highly customizable through the `config.lua` file:
+
+__Disable Unused Integrations:__ Easily toggle off optional features you don't require.
+__Notification System:__ Choose between the ESX default notification system or OKOK Notify for alerts or add your own notify system!
