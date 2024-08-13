@@ -8,6 +8,7 @@
 - core_vehicle
 - rahe_boosting_system
 - saj_tuev
+- jaksam job creator
 - okok_notify
 
 ## Description:
