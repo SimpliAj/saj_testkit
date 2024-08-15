@@ -2,6 +2,7 @@
 
 ## Requirements:
  - ox_lib
+ - progressbar
 
 ## Optional Integrations:
 - emfan-2step
